@@ -1,23 +1,58 @@
 #Problem solving
 
-#Leap year
-#Year that can be divided 4 is leap year
-#if divided by 4 and divided by 100 is not a leap year
-#if divided by 100 and 400 so it will be a leap year
-#1900<=year<=10^5
-#return True or False
-
-def leap_year():
-    year = int(input())
-    if year % 4 == 0:
-        if year % 100 == 0:
-            if year % 400 == 0:
-                return True
-            else:
-                return False
+#Write a program that computes the net amount of a bank account based a transaction log from console input.
+# The transaction log format is shown as following:
+# D 100
+# W 200
+# .
+# D means deposit while 
+# W means withdrawal.
+# Suppose the following input is supplied to the program:
+# D 300
+# D 300
+# W 200
+# D 100
+# .
+# Then, the output should be:
+# 500
+net_amount = 1000
+def D():
+    while True:
+        deposite = int(input("Enter the amount of deposite: "))
+        if deposite < 0:
+            print("Invalid Input..!")
+        elif deposite < 10:
+            print("You must Enter a value that is greater than 10")
         else:
-            return True
-    else:
-        return False
+            global net_amount
+            net_amount = net_amount + deposite
+            return net_amount
 
-print(leap_year())
+def W():
+    while True:
+        withdraw = int(input("Enter the amount of withdrawal: "))
+        if withdraw < 0:
+            print("Invalid Input..!")
+        elif withdraw < 10:
+            print("You must Enter a value that is greater than 10")
+        else:
+            global net_amount
+            net_amount = net_amount - withdraw
+            return net_amount
+
+
+while True:
+    
+    print("---------Choose the number of your Operation---------")
+    print("1- Deposite")
+    print("2- Withdrawal")
+    print("3- Exit")
+    choice = input()
+    if choice == "1":
+        print(D())
+    elif choice == "2":
+        print(W())
+    elif choice == "3":
+        break
+    else:
+        print("Invalid Input..!")
